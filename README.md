@@ -267,11 +267,18 @@ I would like to thank...
 
 ## ❓ FAQ (OPTIONAL) <a name="faq"></a>
 
-> Add at least 2 questions new developers would ask when they decide to use your project.
+> Learn more about FAQ below:
 
-- **[Question_1]**
+- **How do I fix Linters errors if I modify the project?**
 
-  - [Answer_1]
+  - for rubocop run
+  ```sh
+  rubocop -A
+  ```
+  - for Stylint run:
+  ```sh
+  npx stylelint "**/*.{css,scss}" --fix
+  ```
 
 - **[Question_2]**
 
