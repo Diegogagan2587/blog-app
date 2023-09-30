@@ -19,10 +19,10 @@ class Post < ApplicationRecord
   end
 
   def validate_comments_counter
-    self.comments_counter = 0 if self.comments_counter.nil?  
+    self.comments_counter = 0 if comments_counter.nil?
   end
 
   def validate_likes_counter
-    self.likes_counter = 0 if self.likes_counter.nil?
+    self.likes_counter = 0 if likes_counter.nil?
   end
 end

@@ -13,6 +13,6 @@ class User < ApplicationRecord
   end
 
   def validate_posts_counter
-    self.posts_counter = 0 if self.posts_counter.nil?  
+    self.posts_counter = 0 if posts_counter.nil?
   end
 end

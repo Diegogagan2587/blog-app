@@ -70,7 +70,7 @@ end
 #   gem 'selenium-webdriver'
 # end
 group :test do
-gem 'rspec-rails'
+  gem 'rspec-rails'
 end
 
 # rubocop
