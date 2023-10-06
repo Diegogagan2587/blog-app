@@ -16,5 +16,11 @@ RSpec.describe UsersController, type: :controller do
       get :show, params: { id: @user.id}
         expect(response.status).to eq(200)
     end
+
+    #test if correct show template was rendered
+    it 'renders the show template' do
+      get :show, params: { id: @user.id }
+      expect(response).to render_template('show')
+    end
   end
 end
