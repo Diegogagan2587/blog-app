@@ -24,7 +24,7 @@ RSpec.describe PostsController, type: :controller do
 
     #Test if the response body inclue correct plaseholder text
     it 'renders the index template with placeholder text' do
-        get :index
+        get :index, params: { user_id: @user.id}
         expect(response.body).to include('This will show up information about all posts for a given user')
     end
   end
