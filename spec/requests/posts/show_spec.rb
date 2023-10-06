@@ -26,5 +26,9 @@ RSpec.describe PostsController, type: :controller do
         end
 
         #Test if the response body inclue correct plaseholder text
+        it 'renders the show template with placeholder text' do
+          get :show, params: { user_id: @user.id, id: @post.id }
+          expect(response.body).to include("This will display the current post plus a list of comments within the post")
+        end
     end
 end
