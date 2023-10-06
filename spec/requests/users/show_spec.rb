@@ -22,5 +22,11 @@ RSpec.describe UsersController, type: :controller do
       get :show, params: { id: @user.id }
       expect(response).to render_template('show')
     end
+
+    #Test if the response body inclue correct plaseholder text
+    it 'renders the show template with placeholder text' do
+      get :show, params: { id: @user.id}
+      expect(response.body).to include('This will display the data for an specific user')
+    end
   end
 end
