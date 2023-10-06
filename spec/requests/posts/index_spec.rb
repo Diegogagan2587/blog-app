@@ -6,19 +6,19 @@ RSpec.describe PostsController, type: :controller do
     @user = User.new(name: 'diego', photo: '#', bio: 'bio')
     @user.save
 }
+  #next line is to fix the last test case
   render_views
 
   #test if status was correct
   describe 'GET #index' do
     it 'returns a 200 OK status' do
         get :index, params: { user_id: @user.id }
-        puts "----->>>response: #{response.status}"
         expect(response.status).to eq(200)
     end
 
     #test if correct template was rendered
     it 'renders the index template' do
-        get :index
+        get :index, params: { user_id: @user.id}
         expect(response).to render_template('index')
     end
 
