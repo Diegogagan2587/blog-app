@@ -21,6 +21,10 @@ RSpec.describe PostsController, type: :controller do
 
         #test if correct template was rendered
         it 'renders the show template' do
+          get :show, params: { user_id: @user.id, id: @post.id}
+          expect(response).to render_template('show')
         end
+
+        #Test if the response body inclue correct plaseholder text
     end
 end
