@@ -12,16 +12,16 @@ li {
   list-style: none;
 }
 
-/* ----- Start User page ----- */
-
-/* ----- End User page----- */
+body{
+  padding-left: 5%;
+  padding-right: 5%;
+}
 
 /* ----- Start UserCard ----- */
 .user-card {
-  border: 1px solid gray;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 5px;
   width: 100%;
   min-height: 100px
@@ -39,7 +39,7 @@ li {
     justify-content: space-between;
     gap: 20px;
     border: 2px solid gray;
-    width: 75%;
+    width: 81%;
     height: 80px;
     padding-left: 4%;
     padding-right: 4%;
@@ -55,6 +55,22 @@ li {
   align-self:flex-end;
 }
 /* ----- Ends UserCard ----- */
+
+/* ----- Start Bio section ----- */
+.bio {
+  min-height: 130px;
+  border: solid 2px gray;
+}
+
+.bio h3 {
+  margin: 1%;
+}
+
+.bio p {
+  margin: 1%;
+}
+/* ----- Ends Bio section ----- */
+
 /* ----- Start Post Card ----- */
 .post-card {
     display: flex;
