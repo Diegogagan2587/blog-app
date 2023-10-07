@@ -17,6 +17,11 @@ body{
   padding-right: 5%;
 }
 
+.button {
+  margin-left: auto;
+  margin-right: auto;
+  justify-self: center;
+}
 /* ----- Start UserCard ----- */
 .user-card {
   display: flex;
@@ -72,15 +77,29 @@ body{
 /* ----- Ends Bio section ----- */
 
 /* ----- Start Post Card ----- */
+.section-post-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.posts {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px
+}
 .post-card {
     display: flex;
     flex-direction: column;
+    border: 2px solid gray;
+    padding: 1%;
 }
 
 .post-card .stats {
     display: flex;
-    gap: 5px;
-    justify-self: end;
+    gap: 8px;
+    justify-content: flex-end;
+    font-size: 80%;
 }
 /* ----- Ends Post Card ----- */
 

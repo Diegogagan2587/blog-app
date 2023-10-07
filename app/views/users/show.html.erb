@@ -4,14 +4,14 @@
         <h3>Bio</h3>
         <p><%= @user.bio %></p>
     </div>
-    <div class="posts">
-        <ul>
+    <div class="section-post-container">
+        <ul class="posts">
             <% @user.posts.each_with_index do |post, i| %>
                 <li>
                     <%= render partial: 'posts/post_card', locals: { post: post, post_number:i+1 } %>
                 </li>
             <% end %>
         </ul>
-        <button>See all posts</button>
+        <button class="button">See all posts</button>
     </div>
 </div>
