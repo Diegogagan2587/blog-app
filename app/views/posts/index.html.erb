@@ -6,7 +6,9 @@
      <li >
        <ul>
          <li>
-         <%= render partial: 'posts/post_card', locals: {post: post, post_number: i+1} %>
+          <a href="<%=user_post_path(@user, post)%>"  >
+             <%= render partial: 'posts/post_card', locals: {post: post, post_number: i+1} %> 
+          </a>
          </li>
          <li>
              <%= render partial: 'application/comments_box', locals: { comments: post.five_recent_comments  }%>
