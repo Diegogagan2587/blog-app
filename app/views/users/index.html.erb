@@ -6,8 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
   </head>
   <body>
-  <h2>Here is a list of users</h2>
-  <ul>
-  </ul>
+    <ul>
+     <%@users.each do |user| %>
+        <li>
+            <%= render partial: 'application/user_card', locals: { user: user } %>
+        </li>
+      <% end %>
+    </ul>
   </body>
 </html>
