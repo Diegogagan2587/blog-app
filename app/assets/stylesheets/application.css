@@ -7,7 +7,11 @@ li {
   list-style: none;
 }
 
-/* Start UserCard */
+/* ----- Start User page ----- */
+
+/* ----- End User page----- */
+
+/* ----- Start UserCard ----- */
 .user-card {
   border: solid green 1px;
   display: flex;
@@ -18,3 +22,18 @@ li {
     display: flex;
     gap: 20px;
 }
+/* ----- Ends UserCard ----- */
+/* ----- Start Post Card ----- */
+.post-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card .stats {
+    display: flex;
+    gap: 5px;
+    justify-self: end;
+}
+/* ----- Ends Post Card ----- */
+
+
