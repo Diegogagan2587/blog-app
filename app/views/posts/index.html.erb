@@ -1,17 +1,21 @@
 
 <div class="posts-section">
  <%= render partial: 'users/user_card', locals: {user: @user} %>
- <ul>
+ <ul class="post-list">
     <% @user.posts.each_with_index do |post, i| %>
-     <li class="">
-       <div class="">
-        <%= render partial: 'posts/post_card', locals: {post: post, post_number: i+1} %>
-        </div>
-        <div>
-           <%= render partial: 'application/comments_box', locals: { post: post  }%>
-        </div>
+     <li >
+       <ul>
+         <li>
+         <%= render partial: 'posts/post_card', locals: {post: post, post_number: i+1} %>
+         </li>
+         <li>
+             <%= render partial: 'application/comments_box', locals: { post: post  }%>
+         </li>
+        </ul>
      </li>
     <% end %>
  </ul>
- <button>Pagination</button>
+ <div class="pagination">
+   <button class="button">Pagination</button>
+ </div>
 </div>

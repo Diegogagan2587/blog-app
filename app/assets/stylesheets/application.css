@@ -17,11 +17,6 @@ body{
   padding-right: 5%;
 }
 
-.button {
-  margin-left: auto;
-  margin-right: auto;
-  justify-self: center;
-}
 /* ----- Start UserCard ----- */
 .user-card {
   display: flex;
@@ -101,6 +96,23 @@ body{
     justify-content: flex-end;
     font-size: 80%;
 }
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
 /* ----- Ends Post Card ----- */
 
+.comments-box {
+  margin-top: 5px;
+  border: solid 2px gray;
+  width:100%;
+}
+
+.pagination {
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+}
 
