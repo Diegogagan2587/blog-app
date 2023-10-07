@@ -1,0 +1,12 @@
+<div class="comments-box">
+    <ul>
+        <% post.comments.each do |comment| %>
+            <li>
+            <p>
+                <%= post.author%>: <%= comment.text %>
+            </p>        
+            </li>
+        <% end %>
+    </ul>
+    <%= render partial: 'comments/comment_form', locals: { post: post } %>
+</div>
