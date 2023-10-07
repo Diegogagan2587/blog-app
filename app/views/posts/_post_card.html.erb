@@ -1,0 +1,10 @@
+<div class="post-card">
+    <h3>Post #<%= post_number %> </h3>
+    <p>
+        <%= post.text%>
+    </p>
+    <div class="stats">
+        <p>Likes: <%= post.likes.count %></p>
+        <p>Comments: <%= post.comments.count %></p>
+    </div>
+<div>
