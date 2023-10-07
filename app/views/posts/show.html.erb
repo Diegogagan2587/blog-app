@@ -1,1 +1,12 @@
-<h1>This will display the current post plus a list of comments within the post</h1>
+<div class="section-full-post">
+    <div class="full-post">
+        <div class="post-top">
+         <span>Post #<%=@current_post_number%> by <%=@post.author.name%> </span>
+         <div class="post-top-right">
+           <span>Comments: <%=@count_comments%>, Likes: <%=@count_likes%></span>
+         </div>
+        </div>
+        <p> <%=@post.text%> </p>
+        <%= render partial: 'application/comments_box', locals: {post: @post}%>
+    </div>
+</div>
