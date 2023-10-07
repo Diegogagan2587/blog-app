@@ -13,4 +13,17 @@ class PostsController < ApplicationController
     @count_comments = @post.comments.count
     @count_likes = @post.likes.count
   end
+
+  def new
+    @user = current_user
+    @post = Post.new(
+      author: @user,
+    )
+    respond_to do | format |
+      format.html {
+        render :new,
+        locals: { post: @post }
+      }
+    end
+  end
 end
