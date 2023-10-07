@@ -3,10 +3,9 @@
         <% post.comments.each do |comment| %>
             <li>
             <p>
-                <%= post.author%>: <%= comment.text %>
+                <%= post.author.name%>: <%= comment.text %>
             </p>        
             </li>
         <% end %>
     </ul>
-    <%= render partial: 'comments/comment_form', locals: { post: post } %>
 </div>
