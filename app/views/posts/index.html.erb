@@ -1,1 +1,17 @@
-<h1>This will show up information about all posts for a given user</h1>
+
+<div class="posts-section">
+ <%= render partial: 'users/user_card', locals: {user: @user} %>
+ <ul>
+    <% @user.posts.each_with_index do |post, i| %>
+     <li class="">
+       <div class="">
+        <%= render partial: 'posts/post_card', locals: {post: post, post_number: i+1} %>
+        </div>
+        <div>
+           <%= render partial: 'application/comments_box', locals: { post: post  }%>
+        </div>
+     </li>
+    <% end %>
+ </ul>
+ <button>Pagination</button>
+</div>
