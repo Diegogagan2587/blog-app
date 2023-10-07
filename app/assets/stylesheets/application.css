@@ -102,12 +102,37 @@ body{
   flex-direction: column;
   gap: 25px;
 }
+
+.full-post {
+  border: 2px solid gray;
+  min-height: 250px;
+  padding: 1%;
+  margin-top: 20px;
+}
+
+.post-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-top span {
+  font-size: 110%;
+}
+
+.post-top-right {
+  font-size: 90%;
+}
+
+.full-post .fp-text {
+  margin-top: 3%;
+}
 /* ----- Ends Post Card ----- */
 
 .comments-box {
   margin-top: 5px;
   border: solid 2px gray;
   width:100%;
+  padding: 1%;
 }
 
 .pagination {

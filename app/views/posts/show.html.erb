@@ -6,7 +6,7 @@
            <span>Comments: <%=@count_comments%>, Likes: <%=@count_likes%></span>
          </div>
         </div>
-        <p> <%=@post.text%> </p>
-        <%= render partial: 'application/comments_box', locals: {post: @post}%>
+        <p class="fp-text"> <%=@post.text%> </p>
     </div>
+    <%= render partial: 'application/comments_box', locals: {post: @post}%>
 </div>
