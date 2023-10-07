@@ -1,2 +1,17 @@
-<h1>This will display the data for an specific user
-</h1>
+<div class="profile">
+    <%= render partial: 'application/user_card', locals: { user: @user} %>
+    <div>
+        <h3>Bio</h3>
+        <p><%= @user.bio %></p>
+    </div>
+    <div class="posts">
+        <ul>
+            <% @user.posts.each_with_index do |post, i| %>
+                <li>
+                    <%= render partial: 'posts/post_card', locals: { post: post, post_number:i+1 } %>
+                </li>
+            <% end %>
+        </ul>
+        <button>See all posts</button>
+    </div>
+</div>
