@@ -2,7 +2,9 @@
     <ul class="users">
      <%@users.each do |user| %>
         <li>
+         <a href="<%= user_path(user)%>">
             <%= render partial: 'user_card', locals: { user: user } %>
+          <a >
         </li>
       <% end %>
     </ul>

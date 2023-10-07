@@ -8,10 +8,18 @@
         <ul class="posts">
             <% @user.posts.each_with_index do |post, i| %>
                 <li>
-                    <%= render partial: 'posts/post_card', locals: { post: post, post_number:i+1 } %>
+                  <a href="<%=user_post_path(@user,post)%>">
+                   <%= render partial: 'posts/post_card', locals: { post: post, post_number:i+1 } %>
+                  </a>
                 </li>
             <% end %>
         </ul>
-        <button class="button">See all posts</button>
+        <%# next button will redirect to see all post for current user %>
+
     </div>
+            <button class="button">
+            <a href="<%=user_posts_path(@user)%>">
+                See all posts
+            </a>
+        </button>
 </div>

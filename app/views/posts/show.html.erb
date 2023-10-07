@@ -9,4 +9,9 @@
         <p class="fp-text"> <%=@post.text%> </p>
     </div>
     <%= render partial: 'application/comments_box', locals: {post: @post}%>
+          <button class="button">
+            <a href="<%=user_path(@user)%>">
+                Go back
+            </a>
+        </button>
 </div>
