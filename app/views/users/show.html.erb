@@ -6,7 +6,7 @@
     </div>
     <div class="section-post-container">
         <ul class="posts">
-            <% @user.posts.each_with_index do |post, i| %>
+            <% @user.last_three_posts.each_with_index do |post, i| %>
                 <li>
                   <a href="<%=user_post_path(@user,post)%>">
                    <%= render partial: 'posts/post_card', locals: { post: post, post_number:i+1 } %>
