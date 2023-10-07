@@ -9,7 +9,7 @@
          <%= render partial: 'posts/post_card', locals: {post: post, post_number: i+1} %>
          </li>
          <li>
-             <%= render partial: 'application/comments_box', locals: { post: post  }%>
+             <%= render partial: 'application/comments_box', locals: { comments: post.five_recent_comments  }%>
          </li>
         </ul>
      </li>
