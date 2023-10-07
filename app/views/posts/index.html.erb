@@ -1,1 +1,25 @@
-<h1>This will show up information about all posts for a given user</h1>
+
+<div class="posts-section">
+ <%= render partial: 'users/user_card', locals: {user: @user} %>
+ <ul class="post-list">
+    <% @user.posts.each_with_index do |post, i| %>
+     <li >
+       <ul>
+         <li>
+          <a href="<%=user_post_path(@user, post)%>"  >
+             <%= render partial: 'posts/post_card', locals: {post: post, post_number: i+1} %> 
+          </a>
+         </li>
+         <li>
+             <%= render partial: 'application/comments_box', locals: { comments: post.five_recent_comments  }%>
+         </li>
+        </ul>
+     </li>
+    <% end %>
+ </ul>
+ <div class="pagination">
+   <button class="button">
+   <a href="<%=users_path%>">Pagination</a>
+   </button>
+ </div>
+</div>

@@ -1,15 +1,147 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* ----- Start UserCard ----- */
+.user-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  width: 100%;
+  min-height: 100px;
+}
+
+.user-card img {
+  height: 80px;
+  width: 80px;
+  border: solid 2px black;
+}
+
+.user-card .stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 2px solid gray;
+  width: 81%;
+  height: 80px;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.stats h3 {
+  font-size: 200%;
+}
+
+.user-card .stats p {
+  align-self: flex-end;
+}
+
+/* ----- Ends UserCard ----- */
+
+/* ----- Start Bio section ----- */
+.bio {
+  min-height: 130px;
+  border: solid 2px gray;
+}
+
+.bio h3 {
+  margin: 1%;
+}
+
+.bio .b-text {
+  margin: 1%;
+}
+
+/* ----- Ends Bio section ----- */
+
+/* ----- Start Post Card ----- */
+.section-post-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.posts {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid gray;
+  padding: 1%;
+}
+
+.post-card .stats {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  font-size: 80%;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.full-post {
+  border: 2px solid gray;
+  min-height: 250px;
+  padding: 1%;
+  margin-top: 20px;
+}
+
+.post-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-top span {
+  font-size: 110%;
+}
+
+.post-top-right {
+  font-size: 90%;
+}
+
+.full-post .fp-text {
+  margin-top: 3%;
+}
+
+/* ----- Ends Post Card ----- */
+
+.comments-box {
+  margin-top: 5px;
+  border: solid 2px gray;
+  width: 100%;
+  padding: 1%;
+}
+
+.pagination {
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+}

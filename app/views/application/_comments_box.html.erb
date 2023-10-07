@@ -1,0 +1,11 @@
+<div class="comments-box">
+    <ul>
+        <% comments.each do |comment| %>
+            <li>
+            <p>
+                <%= comment.user.name%>: <%= comment.text %>
+            </p>        
+            </li>
+        <% end %>
+    </ul>
+</div>
