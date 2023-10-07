@@ -1,6 +1,6 @@
 * {
   margin: 0;
-  pad: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -12,7 +12,7 @@ li {
   list-style: none;
 }
 
-body{
+body {
   padding-left: 5%;
   padding-right: 5%;
 }
@@ -24,7 +24,7 @@ body{
   justify-content: space-between;
   gap: 5px;
   width: 100%;
-  min-height: 100px
+  min-height: 100px;
 }
 
 .user-card img {
@@ -34,17 +34,17 @@ body{
 }
 
 .user-card .stats {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    border: 2px solid gray;
-    width: 81%;
-    height: 80px;
-    padding-left: 4%;
-    padding-right: 4%;
-    padding-top: 2%;
-    padding-bottom: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 2px solid gray;
+  width: 81%;
+  height: 80px;
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 .stats h3 {
@@ -52,8 +52,9 @@ body{
 }
 
 .user-card .stats p {
-  align-self:flex-end;
+  align-self: flex-end;
 }
+
 /* ----- Ends UserCard ----- */
 
 /* ----- Start Bio section ----- */
@@ -66,9 +67,10 @@ body{
   margin: 1%;
 }
 
-.bio p {
+.bio .b-text {
   margin: 1%;
 }
+
 /* ----- Ends Bio section ----- */
 
 /* ----- Start Post Card ----- */
@@ -77,24 +79,26 @@ body{
   flex-direction: column;
   gap: 10px;
 }
+
 .posts {
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 5px
+  gap: 5px;
 }
+
 .post-card {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid gray;
-    padding: 1%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid gray;
+  padding: 1%;
 }
 
 .post-card .stats {
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
-    font-size: 80%;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  font-size: 80%;
 }
 
 .post-list {
@@ -126,12 +130,13 @@ body{
 .full-post .fp-text {
   margin-top: 3%;
 }
+
 /* ----- Ends Post Card ----- */
 
 .comments-box {
   margin-top: 5px;
   border: solid 2px gray;
-  width:100%;
+  width: 100%;
   padding: 1%;
 }
 
@@ -140,4 +145,3 @@ body{
   display: flex;
   justify-content: center;
 }
-
