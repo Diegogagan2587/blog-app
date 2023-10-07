@@ -8,7 +8,7 @@
         </div>
         <p class="fp-text"> <%=@post.text%> </p>
     </div>
-    <%= render partial: 'application/comments_box', locals: {post: @post}%>
+    <%= render partial: 'application/comments_box', locals: {comments: @comments}%>
           <button class="button">
             <a href="<%=user_path(@user)%>">
                 Go back
