@@ -1,7 +1,8 @@
 <h1>Submmit your comment bellow<h1>
-<%= form_with model: comment, url: user_posts_comment_url, method: :post, local: true, scope: :comment do |form|  %>
+<%= form_with model: comment, url: user_post_comments_path, method: :post, local: true, scope: :comment do |form|  %>
     <%= form.label :text %>
     <%= form.text_area :text %>
     <%= form.submit "Submit comment" %>
-    <%= link_to "Cancel", user_posts_path(@user) %>
 <% end %>
+
+
