@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   def new
     @author = current_user
     @comment = Comment.new(
-      author: author
+      author: @author
     )
     respond_to do |format|
       format.html { 
@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
   def create
     @user = current_user
-    @post = user.posts.find(params[:post_id])
+    @post = @user.posts.find(params[:post_id])
     # new object from params
     @comment = Comment.new(
       post: @post,
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
       text: comment_params[:text]
     )
     # respond_to block
-    respont_to do | format |
+    respond_to do | format |
         format.html do 
             # If comment saves
             if @comment.save
@@ -34,6 +34,7 @@ class CommentsController < ApplicationController
             render :new, locals: { comment: @comment }
             # Render new    
             end
+          end
         end
     end
   end
