@@ -1,0 +1,5 @@
+<h1>Submmit your comment bellow<h1>
+<%= form_with model: comment, url: user_posts_comment_url, method: :post, local: true, scope: :comment do |form|  %>
+    <%= form.label :text %>
+    <%= form.text_area :text %>
+<% end %>
