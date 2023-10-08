@@ -3,6 +3,13 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
+  def add_like
+    @post = Post.find(params[:post_id])
+    @user = User.find(params[:user_id])
+    Like.create(post: @post, user: @user)
+    redirect_to user_post_path(@user, @post)
+  end
+
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
