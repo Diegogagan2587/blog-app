@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def add_like
     @post = Post.find(params[:id])
     @user = User.find(params[:user_id])
-    Like.create(post: @post, user: current_user) unless @post.likes.where(user: @user).any?  
+    Like.create(post: @post, user: current_user) unless @post.likes.where(user: @user).any?
     redirect_to user_post_path(@user, @post)
   end
 
