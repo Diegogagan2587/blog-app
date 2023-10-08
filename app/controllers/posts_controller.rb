@@ -19,6 +19,7 @@ class PostsController < ApplicationController
     # we get count of comments in the post
     @count_comments = @post.comments.count
     @count_likes = @post.likes.count
+    @is_liked = @post.likes.where(user: @user).any?
   end
 
   def new
