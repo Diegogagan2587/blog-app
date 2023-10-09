@@ -1,0 +1,15 @@
+<h1>Would you like to add a post?</h1>
+<%= form_with model: post, url: user_posts_url, method: :post, local: true, scope: :post do |f| %>
+  <div>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+    <div>
+    <%= f.label :text %><br>
+    <%= f.text_field :text %>
+  </div>
+
+
+   <%= f.submit "Create Post"%>
+    <%= link_to "Cancel", user_posts_path(@user) %>
+<%end%>

@@ -67,7 +67,6 @@
 
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
 
 - **Make use fo migrations features from Active Record**
 - **Include Tables like: User, Comment, Post, and Like**
