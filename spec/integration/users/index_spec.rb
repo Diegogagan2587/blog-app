@@ -75,5 +75,6 @@ RSpec.describe 'User', type: :system do
 
   # Lets test user show page
   describe 'Show page' do
+    
   end
 end
