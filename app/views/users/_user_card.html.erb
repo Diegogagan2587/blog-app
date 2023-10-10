@@ -1,7 +1,12 @@
 <div class="user-card">
-    <%= image_tag user.photo %>
+    <% if user.photo.present? %>
+  <%= image_tag user.photo %>
+<% else %>
+  <%= image_tag 'icons/icons8-user-60.png' %>
+<% end %>
     <div class="stats">
         <h3><%= user.name %></h3>
+        <p> <%=user.photo%> </p>
         <p>Number of posts:<%= user.posts.count %></p>
     </div>
 </div>
