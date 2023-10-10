@@ -81,7 +81,7 @@ RSpec.describe 'User', type: :system do
         expect(page).to have_content('See all posts')
     end
 
-    it "Should redirect ro user's post page when click on 'See all posts'" do
+    it "Should redirect ro user's posts page when click on 'See all posts'" do
         visit user_path(@user_four)
         
         within(".button") do
