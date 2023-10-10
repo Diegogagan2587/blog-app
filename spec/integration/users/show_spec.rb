@@ -75,5 +75,24 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_content('John post 4 text')
       expect(page).to_not have_content('John post 1 text')
     end
+
+    it "Should display the button 'See all posts'" do
+        visit user_path(@user_one)
+        expect(page).to have_content('See all posts')
+    end
+
+    it "Should redirect ro user's post page when click on 'See all posts'" do
+        visit user_path(@user_four)
+        
+        within(".button") do
+            click_on 'See all posts'
+        end
+        
+        expect(page).to have_content('John post 1 text')
+        expect(page).to have_content('John post 2 text')
+        expect(page).to have_content('John post 3 text')
+        expect(page).to have_content('John post 4 text')
+        expect(page).to have_content('Number of posts: 4')
+    end
   end
 end
