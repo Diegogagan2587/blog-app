@@ -51,6 +51,25 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_content('0')
     end
 
-    
+    # Clikc on User should open user show page
+    it 'click on user should open user both Mike and Jerry
+     show page and show name, bio see all posts button' do
+      visit users_path
+      click_on 'Jerry'
+      expect(page).to have_content('Jerry')
+      expect(page).to have_content('Student from Japan')
+      expect(page).to have_content('See all posts')
+
+      visit users_path
+      click_on 'Mike'
+      expect(page).to have_content('Mike')
+      expect(page).to have_content('Teacher from Mexico, living in Japan')
+      expect(page).to have_content('See all posts')
+
+      visit users_path
+      click_on 'Monica'
+      expect(page).to have_content('Monica')
+      expect(page).to have_content('Student from Brazil')
+    end
   end
 end
