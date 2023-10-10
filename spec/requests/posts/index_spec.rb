@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   before { Rails.cache.clear }
   before do
-    @user = User.new(name: 'diego', photo: '#', bio: 'bio')
+    @user = User.new(name: 'diego', photo: '', bio: 'bio')
     @user.save
   end
   # next line is to fix the last test case
@@ -23,9 +23,12 @@ RSpec.describe PostsController, type: :controller do
     end
 
     # Test if the response body inclue correct plaseholder text
-    it 'renders the index template with placeholder text' do
+    it 'renders the index template with right placeholders' do
       get :index, params: { user_id: @user.id }
-      expect(response.body).to include('This will show up information about all posts for a given user')
+      expect(response.body).to include('diego')
+      expect(response.body).to include('Number of posts')
+      expect(response.body).to include('Create a new post')
+      expect(response.body).to include('Pagination')
     end
   end
 end
