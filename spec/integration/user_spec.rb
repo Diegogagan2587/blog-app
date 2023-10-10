@@ -18,6 +18,17 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_content('Jerry')
     end
 
-   
+    # check if we can see the user photo of all users
+    it "shows all users's photo" do
+      visit users_path
+      puts ' '
+      puts "user one photo --->>> #{@user_one.photo} "
+      puts "user two photo --->>> #{@user_two.photo} "
+      photo_user_one_proccesed = ActionController::Base.helpers.asset_path(@user_one.photo)
+      photo_user_two_proccesed = ActionController::Base.helpers.asset_path(@user_two.photo)
+      expect(page).to have_css("img[src*='#{photo_user_one_proccesed}']")
+      expect(page).to have_css("img[src*='#{photo_user_two_proccesed}']")
+    end
+
   end
 end
