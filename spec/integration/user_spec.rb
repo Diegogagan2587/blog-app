@@ -5,6 +5,8 @@ RSpec.describe 'User', type: :system do
   describe 'User index page' do
     before(:each) do
       Rails.cache.clear
+      Post.destroy_all
+      User.destroy_all
       @img = 'icons/icons8-user-60.png'
       @user_one = User.create!(name: 'Mike', photo: @img, bio: 'Teacher from Mexico, living in Japan')
       @user_two = User.create!(name: 'Jerry', photo: @img, bio: 'Student from Japan')
