@@ -58,5 +58,15 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_content('1')
     end
 
+    it "Should show the Mike user's bio" do
+      visit user_path(@user_one)
+      expect(page).to have_content('Teacher from Mexico, living in Japan')
+    end
+
+    it "Should show the Jerry user's bio" do
+      visit user_path(@user_two)
+      expect(page).to have_content('Student from Japan')
+    end
+
   end
 end
