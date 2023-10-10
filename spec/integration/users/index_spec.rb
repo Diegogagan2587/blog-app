@@ -37,7 +37,6 @@ RSpec.describe 'User', type: :system do
       puts "photo_user_one_proccesed --->>> #{photo_user_one_proccesed} "
       puts "photo_user_two_proccesed --->>> #{photo_user_two_proccesed} "
 
-
       expect(page).to have_css("img[src*='#{photo_user_one_proccesed}']")
       expect(page).to have_css("img[src*='#{photo_user_two_proccesed}']")
     end
@@ -52,7 +51,7 @@ RSpec.describe 'User', type: :system do
     end
 
     # Clikc on User should open user show page
-    it "click on user should open user ' 
+    it "click on user should open user '
      show page and show name, bio see all posts button" do
       visit users_path
       click_on 'Jerry'
@@ -72,6 +71,4 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_content('Student from Brazil')
     end
   end
-
-
 end

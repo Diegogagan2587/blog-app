@@ -28,6 +28,16 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_css("img[src*='#{photo_user_one_proccesed}']")
     end
 
+    it 'should show the user name: Mike' do
+      visit user_path(@user_one)
+      expect(page).to have_content('Mike')
+    end
+
+    it 'shoud show the user name: Jerry' do
+      visit user_path(@user_two)
+      expect(page).to have_content('Jerry')
+    end
+
     
   end
 end
