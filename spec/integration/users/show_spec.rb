@@ -38,6 +38,25 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_content('Jerry')
     end
 
-    
+    it 'Should show the nunber of post the user has written: Jerry should show 2 post' do
+      visit user_path(@user_one)
+      expect(page).to have_content('2')
+    end
+
+    it 'Should show the nunber of post the user has written: Jerry should show 0 post' do
+      visit user_path(@user_three)
+      expect(page).to have_content('0')
+    end
+
+    it 'Should show the nunber of post the user has written: Jerry should show 4 post' do
+      visit user_path(@user_four)
+      expect(page).to have_content('4')
+    end
+
+    it 'Should show the nunber of post the user has written: Jerry should show 1 post' do
+      visit user_path(@user_two)
+      expect(page).to have_content('1')
+    end
+
   end
 end
