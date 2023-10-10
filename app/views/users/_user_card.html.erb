@@ -1,5 +1,5 @@
 <div class="user-card">
-    <% if user.photo.present? %>
+    <% if user.photo.present? && user.photo != '#'%>
   <%= image_tag user.photo %>
 <% else %>
   <%= image_tag 'icons/icons8-user-60.png' %>
