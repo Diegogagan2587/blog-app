@@ -2,14 +2,13 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   # clean cache before each test
-  before(:each) { 
+  before(:each) do
     Rails.cache.clear
-      img = 'icons/icons8-user-60.png'
-      @user_one = User.create!(name: 'Tom', photo: @img, bio: 'Teacher from Mexico, living in Japan')
-      @user_two = User.create!(name: 'Jerry', photo: @img, bio: 'Student from Japan')
-   }
+    @user_one = User.create!(name: 'Tom', photo: @img, bio: 'Teacher from Mexico, living in Japan')
+    @user_two = User.create!(name: 'Jerry', photo: @img, bio: 'Student from Japan')
+  end
   # fix the last test case
-   render_views
+  render_views
 
   # test if status was correct
   describe 'GET #index' do
