@@ -1,22 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :system do
+  before(:each) do
+    Rails.cache.clear
+    Post.destroy_all
+    User.destroy_all
+    @img = 'icons/icons8-user-60.png'
+    @user_one = User.create!(name: 'Mike', photo: @img, bio: 'Teacher from Mexico, living in Japan')
+    @user_two = User.create!(name: 'Jerry', photo: @img, bio: 'Student from Japan')
+    @user_three = User.create!(name: 'Monica', photo: @img, bio: 'Student from Brazil')
+
+    @post_one = Post.create!(author: @user_one, title: 'Jerry post 1', text: 'Jerry post 1 text')
+    @post_two = Post.create!(author: @user_one, title: 'Jerry post 2', text: 'Jerry post 2 text')
+    @post_three = Post.create!(author: @user_two, title: 'Mike post 1', text: 'Mike post 1 text')
+  end
+
   # lets test user index page first.
-  describe 'User index page' do
-    before(:each) do
-      Rails.cache.clear
-      Post.destroy_all
-      User.destroy_all
-      @img = 'icons/icons8-user-60.png'
-      @user_one = User.create!(name: 'Mike', photo: @img, bio: 'Teacher from Mexico, living in Japan')
-      @user_two = User.create!(name: 'Jerry', photo: @img, bio: 'Student from Japan')
-      @user_three = User.create!(name: 'Monica', photo: @img, bio: 'Student from Brazil')
-
-      @post_one = Post.create!(author: @user_one, title: 'Jerry post 1', text: 'Jerry post 1 text')
-      @post_two = Post.create!(author: @user_one, title: 'Jerry post 2', text: 'Jerry post 2 text')
-      @post_three = Post.create!(author: @user_two, title: 'Mike post 1', text: 'Mike post 1 text')
-    end
-
+  describe 'Index page' do
     # check if we can see the user name of all users
     it "shows all users's username" do
       visit users_path
@@ -71,5 +71,9 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_content('Monica')
       expect(page).to have_content('Student from Brazil')
     end
+  end
+
+  # Lets test user show page
+  describe 'Show page' do
   end
 end
