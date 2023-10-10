@@ -52,8 +52,8 @@ RSpec.describe 'User', type: :system do
     end
 
     # Clikc on User should open user show page
-    it 'click on user should open user both Mike and Jerry
-     show page and show name, bio see all posts button' do
+    it "click on user should open user ' 
+     show page and show name, bio see all posts button" do
       visit users_path
       click_on 'Jerry'
       expect(page).to have_content('Jerry')
