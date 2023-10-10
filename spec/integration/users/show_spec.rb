@@ -68,5 +68,12 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_content('Student from Japan')
     end
 
+    it "Should display the user's first 3 post" do
+      visit user_path(@user_four)
+      expect(page).to have_content('John post 2 text')
+      expect(page).to have_content('John post 3 text')
+      expect(page).to have_content('John post 4 text')
+      expect(page).to_not have_content('John post 1 text')
+    end
   end
 end
