@@ -81,6 +81,14 @@ RSpec.describe 'User', type: :system do
         expect(page).to have_content('See all posts')
     end
 
+    it "Should open the clicked Post" do
+        visit user_path(@user_four)
+        click_on 'John post 2 text'
+        expect(page).to have_content('John post 2 text')
+        expect(page).to have_content('Comments:')
+        expect(page).to have_content('Likes:')
+    end
+
     it "Should redirect ro user's posts page when click on 'See all posts'" do
         visit user_path(@user_four)
         
