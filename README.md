@@ -53,6 +53,7 @@
   <summary>Server</summary>
   <ul>
     <li><a href="https://rubyonrails.org/">Ruby on Rails</a></li>
+    <li><a href="https://www.ruby-toolbox.com/projects/kaminari">Pagination: kaminari</a></li>
   </ul>
 </details>
 
