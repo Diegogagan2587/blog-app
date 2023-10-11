@@ -79,3 +79,6 @@ end
 
 # rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
+
+# gem for pagination
+gem 'kaminari'
