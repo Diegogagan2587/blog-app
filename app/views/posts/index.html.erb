@@ -2,11 +2,11 @@
 <div class="posts-section">
  <%= render partial: 'users/user_card', locals: {user: @user} %>
  <ul class="post-list">
-    <% @user.posts.each_with_index do |post, i| %>
+    <% @posts.each_with_index do |post, i| %>
      <li >
        <ul>
          <li>
-          <a href="<%=user_post_path(@user, post)%>"  >
+          <a href="<%=user_post_path(post.author, post)%>"  >
              <%= render partial: 'posts/post_card', locals: {post: post, post_number: i+1} %> 
           </a>
          </li>
@@ -19,10 +19,11 @@
  </ul>
  <div class="pagination">
    <button class="button">
-   <a href="<%=users_path%>">Pagination</a>
+   <a href="<%=user_path(@user)%>">Back to profile</a>
    </button>
+ <%= paginate @posts %>
    <button class="button">
-   <a href="<%=new_user_post_path(@user)%>">Create a new post</a>
+   <a href="<%=new_user_post_path(@user)%>">New post</a>
    </button>
  </div>
 </div>
