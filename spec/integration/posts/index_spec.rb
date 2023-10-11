@@ -43,6 +43,7 @@ RSpec.describe 'Post', type: :system do
 
         it "Should show the title of the post" do
             visit user_posts_path(@user_one)
+
             expect(page).to have_content('Post #1 Mike post 1')
             expect(page).to have_content('Post #2 Mike post 2')
             expect(page).to have_content('Post #3 Mike post 3')
@@ -70,6 +71,14 @@ RSpec.describe 'Post', type: :system do
             visit user_posts_path(@user_one)
             expect(page).to have_content('Likes: 1')
             expect(page).to have_content('Likes: 0')
+        end
+
+
+
+        it "should redirect to a post's show page when clicking on the post's title" do
+            visit user_posts_path(@user_one)
+            click_on 'Post #1 Mike post 1'
+            expect(page).to have_current_path(user_post_path(@user_one,@post_one))
         end
     end
 end
