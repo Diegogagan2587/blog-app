@@ -33,3 +33,6 @@
 # Ignore Node modules
 node_modules/
 
+# vscode local config
+.vscode
+
