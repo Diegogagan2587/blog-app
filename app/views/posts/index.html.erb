@@ -7,7 +7,7 @@
        <ul>
          <li>
           <a href="<%=user_post_path(post.author, post)%>"  >
-             <%= render partial: 'posts/post_card', locals: {post: post, post_number: i+1} %> 
+             <%= render partial: 'posts/post_card', locals: {post: post, post_number: @posts.length - i} %> 
           </a>
          </li>
          <li>
