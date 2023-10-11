@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Post', type: :system do
     before(:each) do
+        Like.destroy_all
         Comment.destroy_all
         Post.destroy_all
         User.destroy_all
@@ -19,7 +20,7 @@ RSpec.describe 'Post', type: :system do
 
         @comment_one = Comment.create!(post: @post_one, author: @user_one, text: 'Mike post 1 comment 1')
 
-
+        @like_one = Like.create!(user: @user_one, post: @post_one)
     end
 
     describe "Index page" do
@@ -63,6 +64,12 @@ RSpec.describe 'Post', type: :system do
             visit user_posts_path(@user_one)
             expect(page).to have_content('Comments: 1')
             expect(page).to have_content('Comments: 0')
+        end
+
+        it "should show the number of likes the post has" do
+            visit user_posts_path(@user_one)
+            expect(page).to have_content('Likes: 1')
+            expect(page).to have_content('Likes: 0')
         end
     end
 end
