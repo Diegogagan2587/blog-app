@@ -32,5 +32,14 @@ RSpec.describe 'Post', type: :system do
             expect(page).to have_content('Number of posts: 5')
         end
 
+        it "Should show the title of the post" do
+            visit user_posts_path(@user_one)
+            
+            expect(page).to have_content('Post #1 Mike post 1')
+            expect(page).to have_content('Post #2 Mike post 2')
+            expect(page).to have_content('Post #3 Mike post 3')
+            expect(page).to have_content('Post #4 Mike post 4')
+            expect(page).to have_content('Post #5 Mike post 5')
+        end
     end
 end
