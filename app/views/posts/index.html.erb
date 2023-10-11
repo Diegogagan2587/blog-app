@@ -6,7 +6,7 @@
      <li >
        <ul>
          <li>
-          <a href="<%=user_post_path(post.author, post)%>"  >
+          <a href="<%=user_post_path(@user, post)%>"  >
              <%= render partial: 'posts/post_card', locals: {post: post, post_number: @posts.length - i} %> 
           </a>
          </li>
