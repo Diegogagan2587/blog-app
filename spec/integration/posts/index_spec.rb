@@ -22,5 +22,11 @@ RSpec.describe 'Post', type: :system do
             expect(page).to have_css("img[src*='#{photo_user_one_proccesed}']")
         end
 
+        it "shoud show the user's name" do
+            visit user_posts_path(@user_one)
+            expect(page).to have_content('Mike')
+        end
+
+       
     end
 end
