@@ -9,7 +9,9 @@ class Post < ApplicationRecord
   before_save :validate_likes_counter
 
   after_save :update_counter_posts
-  # next method will reutunr 5 most recent comments for a post
+  # next method will set pagination to 5 post per page
+  paginates_per 5
+  https://www.ruby-toolbox.com/projects/kaminari
   def five_recent_comments
     comments.order(created_at: :desc).limit(5)
   end
