@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
-
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(5)
-    @current_page = params[:page] || 1 
+    @current_page = params[:page] || 1
   end
 
   def add_like
