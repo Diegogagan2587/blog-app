@@ -73,7 +73,11 @@ RSpec.describe 'Post', type: :system do
             expect(page).to have_content('Likes: 0')
         end
 
-
+         it "should show a section for pagination if there are more posts than fit on the view" do
+             visit user_posts_path(@user_one)
+             puts page.body
+             expect(page).to have_css('.pagination')
+         end
 
         it "should redirect to a post's show page when clicking on the post's title" do
             visit user_posts_path(@user_one)
