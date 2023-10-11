@@ -27,6 +27,10 @@ RSpec.describe 'Post', type: :system do
             expect(page).to have_content('Mike')
         end
 
-       
+        it "shold show the number of posts the user has written" do
+            visit user_posts_path(@user_one)
+            expect(page).to have_content('Number of posts: 5')
+        end
+
     end
 end
