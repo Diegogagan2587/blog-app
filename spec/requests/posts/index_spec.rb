@@ -27,8 +27,8 @@ RSpec.describe PostsController, type: :controller do
       get :index, params: { user_id: @user.id }
       expect(response.body).to include('diego')
       expect(response.body).to include('Number of posts')
-      expect(response.body).to include('Create a new post')
-      expect(response.body).to include('Pagination')
+      expect(response.body).to include('New post')
+      expect(response.body).to include('Back to profile')
     end
   end
 end
