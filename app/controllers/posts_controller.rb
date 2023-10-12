@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
+    @posts = @user.posts.includes(comments: :user).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def add_like
