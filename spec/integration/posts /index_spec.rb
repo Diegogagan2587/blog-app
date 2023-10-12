@@ -23,5 +23,13 @@ RSpec.describe 'Post', type: :system do
     @like_one = Like.create!(user: @user_one, post: @post_one)
   end
 
-  
+  describe 'Index page' do
+    it "shoud show the user's profile picture" do
+      visit user_posts_path(@user_one)
+
+      photo_user_one_proccesed = ActionController::Base.helpers.asset_path(@user_one.photo)
+      expect(page).to have_css("img[src*='#{photo_user_one_proccesed}']")
+    end
+
+  end
 end
