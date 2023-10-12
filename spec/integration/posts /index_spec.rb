@@ -1,0 +1,27 @@
+require 'rails_helper'
+
+RSpec.describe 'Post', type: :system do
+  before(:each) do
+    Like.destroy_all
+    Comment.destroy_all
+    Post.destroy_all
+    User.destroy_all
+
+    @img = 'icons/icons8-user-60.png'
+    @user_one = User.create!(name: 'Mike', photo: @img, bio: 'Teacher from Mexico, living in Japan')
+    @user_two = User.create!(name: 'John', photo: @img, bio: 'Teacher from USA, living in Japan')
+
+    @post_one = Post.create!(author: @user_one, title: 'Mike post 1', text: 'Mike post 1 text')
+    @post_two = Post.create!(author: @user_one, title: 'Mike post 2', text: 'Mike post 2 text')
+    @post_three = Post.create!(author: @user_one, title: 'Mike post 3', text: 'Mike post 3 text')
+    @post_four = Post.create!(author: @user_one, title: 'Mike post 4', text: 'Mike post 4 text')
+    @post_five = Post.create!(author: @user_one, title: 'Mike post 5', text: 'Mike post 5 text')
+    @post_six = Post.create!(author: @user_two, title: 'John post 1', text: 'John post 1 text')
+
+    @comment_one = Comment.create!(post: @post_one, author: @user_one, text: 'Mike post 1 comment 1')
+
+    @like_one = Like.create!(user: @user_one, post: @post_one)
+  end
+
+  
+end
