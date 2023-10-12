@@ -67,5 +67,11 @@ RSpec.describe 'Post', type: :system do
       expect(page).to have_content('Comments: 0')
     end
 
+    it 'should show the number of likes the post has' do
+      visit user_posts_path(@user_one)
+      expect(page).to have_content('Likes: 1')
+      expect(page).to have_content('Likes: 0')
+    end
+
   end
 end
