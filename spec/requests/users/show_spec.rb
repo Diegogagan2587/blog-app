@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   before { Rails.cache.clear }
   before do
-    @user = User.new(name: 'diego', photo: '#', bio: 'MX dev')
+    @user = User.new(name: 'diego', photo: '', bio: 'MX dev')
     @user.save
   end
 
@@ -24,9 +24,10 @@ RSpec.describe UsersController, type: :controller do
     end
 
     # Test if the response body inclue correct plaseholder text
-    it 'renders the show template with placeholder text' do
+    it 'renders the show template with username, and bio' do
       get :show, params: { id: @user.id }
-      expect(response.body).to include('This will display the data for an specific user')
+      expect(response.body).to include('diego')
+      expect(response.body).to include('MX dev')
     end
   end
 end
