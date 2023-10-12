@@ -85,5 +85,10 @@ RSpec.describe 'Post', type: :system do
       expect(page).to have_content('Last')
     end
 
+    it "should redirect to a post's show page when clicking on the post's title" do
+      visit user_posts_path(@user_one)
+      click_on 'Post #1 Mike post 1'
+      expect(page).to have_current_path(user_post_path(@user_one, @post_one))
+    end
   end
 end
