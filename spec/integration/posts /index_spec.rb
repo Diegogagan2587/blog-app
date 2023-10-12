@@ -56,5 +56,10 @@ RSpec.describe 'Post', type: :system do
       expect(page).to have_content('Mike post 1 text')
     end
 
+    it 'should show the first comment of the post' do
+      visit user_posts_path(@user_one)
+      expect(page).to have_content('Mike post 1 comment 1')
+    end
+
   end
 end
