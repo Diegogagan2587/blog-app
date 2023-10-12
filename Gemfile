@@ -83,4 +83,4 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 # gem for pagination
 gem 'kaminari'
 
-gem "devise", "~> 4.9"
+gem 'devise', '~> 4.9'
