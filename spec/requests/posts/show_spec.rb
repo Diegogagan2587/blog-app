@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   before { Rails.cache.clear }
   before do
-    @user = User.new(name: 'diego', photo: '@', bio: 'bio')
+    @user = User.new(name: 'diego', photo: '', bio: 'bio')
     @post = Post.new(author: @user, text: 'text', title: 'title')
     @post.save
     @user.save
@@ -28,7 +28,10 @@ RSpec.describe PostsController, type: :controller do
     # Test if the response body inclue correct plaseholder text
     it 'renders the show template with placeholder text' do
       get :show, params: { user_id: @user.id, id: @post.id }
-      expect(response.body).to include('This will display the current post plus a list of comments within the post')
+      expect(response.body).to include('Post')
+      expect(response.body).to include('by diego')
+      expect(response.body).to include('Comments')
+      expect(response.body).to include('Likes')
     end
   end
 end
