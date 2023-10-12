@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  user = User.create(name: 'Tom', photo: '#', bio: 'Teacher from Mexico')
-  user_two = User.create(name: 'Tim', photo: '#', bio: 'Teacher from Venezuela')
+  user = User.create(name: 'Tom', photo: '', bio: 'Teacher from Mexico')
+  user_two = User.create(name: 'Tim', photo: '', bio: 'Teacher from Venezuela')
   subject { Post.new(author: user, title: 'How to gain a dollar', text: 'Get a job') }
   before { subject.save }
 
