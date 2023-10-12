@@ -51,5 +51,10 @@ RSpec.describe 'Post', type: :system do
       expect(page).to have_content('Post #5 Mike post 5')
     end
 
+    it "should show some of the post's body(text)" do
+      visit user_posts_path(@user_one)
+      expect(page).to have_content('Mike post 1 text')
+    end
+
   end
 end
