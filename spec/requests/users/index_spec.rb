@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   # clean cache before each test
-  before { Rails.cache.clear }
-
+  before(:each) do
+    Rails.cache.clear
+    @user_one = User.create!(name: 'Tom', photo: @img, bio: 'Teacher from Mexico, living in Japan')
+    @user_two = User.create!(name: 'Jerry', photo: @img, bio: 'Student from Japan')
+  end
   # fix the last test case
   render_views
 
@@ -21,9 +24,10 @@ RSpec.describe UsersController, type: :controller do
     end
 
     # Test if the response body inclue correct plaseholder text
-    it 'renders the index template with placeholder text' do
+    it 'renders the index template with users Tom and Jerry' do
       get :index
-      expect(response.body).to include('Here is a list of users')
+      expect(response.body).to include('Tom')
+      expect(response.body).to include('Jerry')
     end
   end
 end
