@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   validates :name, presence: true
-  validates :bio, presence: true
+  validates :bio, presence: false
 
   before_save :validate_posts_counter
 
