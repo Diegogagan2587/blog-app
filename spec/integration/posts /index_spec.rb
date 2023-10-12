@@ -73,5 +73,17 @@ RSpec.describe 'Post', type: :system do
       expect(page).to have_content('Likes: 0')
     end
 
+    it 'should show a section for pagination if there are more posts than fit on the view' do
+      # we create aditional user to have more than 5 test and reder pagiantion nav
+      @post_seven = Post.create!(author: @user_one, title: 'Mike post 6', text: 'Mike post 6 text')
+
+      visit user_posts_path(@user_one)
+
+      # then we test the pagination nav
+      expect(page).to have_css('.pagination')
+      expect(page).to have_content('Next')
+      expect(page).to have_content('Last')
+    end
+
   end
 end
