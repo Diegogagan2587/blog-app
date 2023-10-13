@@ -1,0 +1,27 @@
+
+.authentication {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vmin;
+}
+
+.new_user {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5vmin;
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.check-field {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  gap: 5%;
+}

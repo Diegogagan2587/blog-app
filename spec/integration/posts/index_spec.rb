@@ -8,8 +8,13 @@ RSpec.describe 'Post', type: :system do
     User.destroy_all
 
     @img = 'icons/icons8-user-60.png'
-    @user_one = User.create!(name: 'Mike', photo: @img, bio: 'Teacher from Mexico, living in Japan')
-    @user_two = User.create!(name: 'John', photo: @img, bio: 'Teacher from USA, living in Japan')
+    @user_one = User.create!(name: 'Mike', photo: @img, bio: 'Teacher from Mexico, living in Japan',
+                             password: 'm123456', email: 'mike@email.com')
+    # now we need to confirm email of user_one to be able to login and run test adn create posts
+    @user_one.confirm
+    @user_two = User.create!(name: 'John', photo: @img, bio: 'Teacher from USA, living in Japan',
+                             password: 'j123456', email: 'john@email.com')
+    @user_two.confirm
 
     @post_one = Post.create!(author: @user_one, title: 'Mike post 1', text: 'Mike post 1 text')
     @post_two = Post.create!(author: @user_one, title: 'Mike post 2', text: 'Mike post 2 text')
@@ -25,7 +30,11 @@ RSpec.describe 'Post', type: :system do
 
   describe 'Index page' do
     it "shoud show the user's profile picture" do
-      visit user_posts_path(@user_one)
+      visit users_path
+      fill_in 'user_email', with: @user_one.email
+      fill_in 'user_password', with: @user_one.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on 'Mike' }
 
       photo_user_one_proccesed = ActionController::Base.helpers.asset_path(@user_one.photo)
       expect(page).to have_css("img[src*='#{photo_user_one_proccesed}']")
@@ -37,7 +46,14 @@ RSpec.describe 'Post', type: :system do
     end
 
     it 'shold show the number of posts the user has written' do
-      visit user_posts_path(@user_one)
+      visit users_path
+      fill_in 'user_email', with: @user_one.email
+      fill_in 'user_password', with: @user_one.password
+      sleep(1)
+      within('.new_user') { click_on 'Login' }
+      sleep(2)
+      within('.users') { click_on 'Mike' }
+      sleep(2)
       expect(page).to have_content('Number of posts: 5')
     end
 
