@@ -17,7 +17,7 @@ RSpec.describe PostsController, type: :controller do
   before :each do
     Rails.cache.clear
     User.destroy_all
-    @user = User.create(name: 'diego', photo: '', bio: 'bio', email:'diego@mail.com', password: '123456')
+    @user = User.create(name: 'diego', photo: '', bio: 'bio', email: 'diego@mail.com', password: '123456')
     sign_in @user
     puts @user.errors.messages unless @user.valid?
   end

@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
-  before { Rails.cache.clear }
+  include Devise::Test::ControllerHelpers
   before do
-    @user = User.new(name: 'diego', photo: '', bio: 'bio')
+    Rails.cache.clear
+    @user = User.new(name: 'diego', photo: '', bio: 'bio', email: 'diego@mail.com', password: '123456')
     @post = Post.new(author: @user, text: 'text', title: 'title')
     @post.save
     @user.save
+    puts @user.errors.messages unless @user.valid?
+    puts @post.errors.messages unless @post.valid?
   end
   # next line will allow to check if the placeholder text is present
   render_views
