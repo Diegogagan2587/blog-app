@@ -82,5 +82,8 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 # gem for pagination
 gem 'kaminari'
-
+# gem for authentication
 gem 'devise', '~> 4.9'
+
+# gem for authorization
+gem 'cancancan'
