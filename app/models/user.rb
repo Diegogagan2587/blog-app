@@ -11,13 +11,12 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :bio, presence: false
 
-  before_save :validate_posts_counter
+  def initialize(attributes = {})
+    super
+    self.posts_counter = 0
+  end
 
   def last_three_posts
     posts.order(created_at: :desc).limit(3)
-  end
-
-  def validate_posts_counter
-    self.posts_counter = 0 if posts_counter.nil?
   end
 end
