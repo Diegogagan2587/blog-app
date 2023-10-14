@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post 'add_like', on: :member
       delete 'delete_like', on: :member
       delete 'delete_post', on: :member
+      delete 'delete_comment', on: :member
       resources :comments, only: [:new, :create]
     end
   end
