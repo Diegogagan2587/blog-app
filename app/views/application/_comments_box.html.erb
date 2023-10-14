@@ -5,6 +5,7 @@
             <p>
                 <%= comment.user.name%>: <%= comment.text %>
             </p>        
+            <%= button_to "Remove", delete_comment_user_post_url(@user, @post, comment_id: comment.id), method: :delete, data: { confirm: "Are you sure?" } %>
             </li>
         <% end %>
     </ul>
