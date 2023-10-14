@@ -1,20 +1,24 @@
+<%= stylesheet_link_tag 'post_page' %>
 <div class="section-full-post">
-    <div class="full-post">
-        <div class="post-top">
-         <span>Post #<%=@current_post_number%>: <%=@post.title%> by <%=@post.author.name%> </span>
-         <div class="post-top-right">
-           <span>Comments: <%=@count_comments%>, Likes: <%=@count_likes%></span>
-         </div>
-        </div>
-        <p class="fp-text"> <%=@post.text%> </p>
+  <div class="full-post">
+    <div class="post-top">
+      <span>Post #<%=@current_post_number%>: <%=@post.title%> by <%=@post.author.name%> </span>
+      <div class="post-top-right">
+        <span>Comments: <%=@count_comments%>, Likes: <%=@count_likes%></span>
+      </div>
     </div>
-    <%= render partial: 'application/comments_box', locals: {comments: @comments}%>
-          <button class="button">
-            <a href="<%=user_path(@user)%>">
-                Go back
-            </a>
-        </button>
-        <div class="like-container">
-            <%= render partial: 'application/likes_button', object: @post, as: :post %>
-        </div>
+    <p class="fp-text"> <%=@post.text%> </p>
+  </div>
+  <%= render partial: 'application/comments_box', locals: {comments: @comments}%>
+  <div class="post-options">
+    <button class="button go-back">
+      <a href="<%=user_path(@user)%>">
+        Go back
+      </a>
+    </button>
+    <div class="like-container">
+      <%= render partial: 'application/likes_button', object: @post, as: :post %>
+    </div>
+    <%= render partial: 'application/btn_remove_post', locals: {post: @post, current_user: current_user} %>
+  </div>
 </div>
