@@ -45,7 +45,8 @@
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://reactjs.org/">React.js</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">HTML</a></li>
   </ul>
 </details>
 
@@ -56,6 +57,7 @@
     <li><a href="https://www.ruby-toolbox.com/projects/kaminari">Pagination: kaminari</a></li>
     <li><a href="https://github.com/heartcombo/devise#getting-started">Authentication: devise </a></li>
     <li><a href="https://github.com/CanCanCommunity/cancancan">Authorization: CanCanCan</a></li>
+    <li><a href="https://github.com/rspec/rspec-rails">Test: rspec-rails</a></li>
   </ul>
 </details>
 
@@ -131,17 +133,17 @@ To run the project, execute the following command:
 ```
 ### Run tests
 
-Test are under construction, but we expect to have them completed soon!
-<!--
-Example command:
-To run tests, run the following command:
-
-
+To run all tests, run the following command:
 
 ```sh
-  bin/rails test test/models/article_test.rb
+  bin/rails rspec
 ```
---->
+
+or you might prefer instead:
+```sh
+rails rspec
+```
+
 
 ### Deployment
 
