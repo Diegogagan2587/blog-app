@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :bio, presence: false
 
-  Roles = [:admin, :user]
+  ROLES = %i[admin user].freeze
 
   def initialize(attributes = {})
     super
@@ -22,7 +22,7 @@ class User < ApplicationRecord
     posts.order(created_at: :desc).limit(3)
   end
 
-  def is?( requested_role )
-    self.role == requested_role.to_s
+  def is?(requested_role)
+    role == requested_role.to_s
   end
 end
