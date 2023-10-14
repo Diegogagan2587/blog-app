@@ -16,10 +16,13 @@
         </ul>
         <%# next button will redirect to see all post for current user %>
     </div>
-        <button class="button">
+    <div class="posts-options">
+                <button class="button btn-user-posts">
             <a href="<%=user_posts_path(@user)%>">See more posts</a>
         </button>
                <button class="button">
             <a href="<%=users_path%>">other user's posts</a>
         </button>
+    </div>
+
 </div>
