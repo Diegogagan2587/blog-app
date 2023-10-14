@@ -19,6 +19,6 @@
     <div class="like-container">
       <%= render partial: 'application/likes_button', object: @post, as: :post %>
     </div>
-    <%= render partial: 'application/btn_remove_post', locals: {post: @post, current_user: current_user} %>
+    <%= render partial: 'btn_remove_post', locals: {post: @post, current_user: current_user} %>
   </div>
 </div>
