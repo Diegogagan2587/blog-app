@@ -1,0 +1,5 @@
+    <% if current_user == @post.author || current_user.is?(:admin) %>
+      <button class="button delete-post">
+        <%= link_to 'Delete post', user_post_path(@post.author,@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </button>
+    <% end %>
