@@ -18,6 +18,13 @@ class PostsController < ApplicationController
     redirect_to user_posts_path(@user)
   end
 
+  def delete_comment
+    @comment = Comment.find(params[:comment_id])
+    @user = User.find(params[:user_id])
+    @comment.destroy
+    redirect_to user_post_path(@user, @comment.post)
+  end
+
   def show
     @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
