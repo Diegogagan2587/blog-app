@@ -48,7 +48,7 @@ RSpec.describe 'Post', type: :system do
       within('.posts') { click_on @post_one.title }
       # now we can test if the post title is shown
 
-      expect(page).to have_content('Post #2: How to live in Japan')
+      expect(page).to have_content(@post_one.title)
     end
 
     it 'should show the who wrote the post' do
@@ -63,7 +63,7 @@ RSpec.describe 'Post', type: :system do
 
       within('.post-list') { click_on @post_one.title }
 
-      expect(page).to have_content('by Antonio')
+      expect(page).to have_content(@post_one.author.name)
     end
 
     it 'should show how many comments it has' do

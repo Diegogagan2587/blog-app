@@ -17,7 +17,10 @@ RSpec.describe PostsController, type: :controller do
   before :each do
     Rails.cache.clear
     User.destroy_all
+    Post.destroy_all
     @user = User.create(name: 'diego', photo: '', bio: 'bio', email: 'diego@mail.com', password: '123456')
+    @post = Post.create(author: @user, title: 'title', text: 'text')
+    @user.confirm
     sign_in @user
     puts @user.errors.messages unless @user.valid?
   end
@@ -29,12 +32,12 @@ RSpec.describe PostsController, type: :controller do
     it 'returns a 200 OK status' do
       sign_in @user
       get :index, params: { user_id: @user.id }
-      puts response.body
       expect(response.status).to eq(200)
     end
 
     # test if correct template was rendered
     it 'renders the index template' do
+      sign_in @user
       get :index, params: { user_id: @user.id }
       expect(response).to render_template('index')
     end

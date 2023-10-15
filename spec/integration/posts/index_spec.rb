@@ -45,7 +45,7 @@ RSpec.describe 'Post', type: :system do
       visit users_path
       fill_in 'user_email', with: @user_one.email
       fill_in 'user_password', with: @user_one.password
-      within('.new_user') { click_on 'Login' }  
+      within('.new_user') { click_on 'Login' }
       within('.users') { click_on 'Mike' }
       expect(page).to have_content('Mike')
     end
@@ -63,15 +63,14 @@ RSpec.describe 'Post', type: :system do
     end
 
     it 'Should show the title of the post' do
-      visit users_path 
+      visit users_path
       fill_in 'user_email', with: @user_one.email
       fill_in 'user_password', with: @user_one.password
       within('.new_user') { click_on 'Login' }
       within('.users') { click_on 'Mike' }
-      
+
       within('.btn-user-posts') { click_on 'See more posts' }
-   
-    
+
       expect(page).to have_content('Post #1 Mike post 1')
       expect(page).to have_content('Post #2 Mike post 2')
       expect(page).to have_content('Post #3 Mike post 3')
@@ -80,7 +79,7 @@ RSpec.describe 'Post', type: :system do
     end
 
     it "should show some of the post's body(text)" do
-      visit users_path 
+      visit users_path
       fill_in 'user_email', with: @user_one.email
       fill_in 'user_password', with: @user_one.password
       within('.new_user') { click_on 'Login' }
@@ -103,7 +102,7 @@ RSpec.describe 'Post', type: :system do
     end
 
     it 'should show the number of comments the post has' do
-      #we login with any user to be able to see the post
+      # we login with any user to be able to see the post
       visit users_path
       fill_in 'user_email', with: @user_one.email
       fill_in 'user_password', with: @user_one.password
@@ -117,7 +116,7 @@ RSpec.describe 'Post', type: :system do
     end
 
     it 'should show the number of likes the post has' do
-      #we login with any user to be able to see the post
+      # we login with any user to be able to see the post
       visit users_path
       fill_in 'user_email', with: @user_one.email
       fill_in 'user_password', with: @user_one.password
@@ -144,8 +143,8 @@ RSpec.describe 'Post', type: :system do
     end
 
     it "should redirect to a post's show page when clicking on the post's title" do
-      #we login with any user to be able to see the post
-      visit users_path 
+      # we login with any user to be able to see the post
+      visit users_path
       fill_in 'user_email', with: @user_one.email
       fill_in 'user_password', with: @user_one.password
       within('.new_user') { click_on 'Login' }
@@ -154,7 +153,7 @@ RSpec.describe 'Post', type: :system do
       within('.btn-user-posts') { click_on 'See more posts' }
       # we navigate to the post#show page
       within('.post-list') { click_on 'Mike post 1' }
-      
+
       # we test the the page is redirected to the post#show page
       expect(page).to have_current_path(user_post_path(@user_one, @post_one))
     end
