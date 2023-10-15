@@ -131,14 +131,14 @@ RSpec.describe 'User', type: :system do
       expect(page).to_not have_content('John post 1 text')
     end
 
-    it "Should display the button 'See all posts'" do
+    it "Should display the button 'See more posts'" do
       visit users_path
       fill_in 'user_email', with: @user_one.email
       fill_in 'user_password', with: @user_one.password
       within('.new_user') { click_on 'Login' }
       within('.users') { click_on @user_one.name }
 
-      expect(page).to have_content('See all posts')
+      expect(page).to have_content('See more posts')
     end
 
     it 'Should open the clicked Post' do
@@ -154,15 +154,15 @@ RSpec.describe 'User', type: :system do
       expect(page).to have_content('Likes:')
     end
 
-    it "Should redirect ro user's posts page when click on 'See all posts'" do
+    it "Should redirect ro user's posts page when click on 'See more posts'" do
       visit users_path
       fill_in 'user_email', with: @user_one.email
       fill_in 'user_password', with: @user_one.password
       within('.new_user') { click_on 'Login' }
       within('.users') { click_on @user_four.name }
 
-      within('.button') do
-        click_on 'See all posts'
+      within('.btn-user-posts') do
+        click_on 'See more posts'
       end
 
       expect(page).to have_content('John post 1 text')
