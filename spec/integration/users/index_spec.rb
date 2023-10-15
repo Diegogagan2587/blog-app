@@ -79,8 +79,8 @@ RSpec.describe 'User', type: :system do
     end
 
     # Clikc on User should open user show page
-    it "click on user should open user '
-     show page and show name, bio see all posts button" do
+    it "click on user should open user#show page and
+     show name, bio See more posts button" do
       visit users_path
       # enter login info
       fill_in 'user_email', with: 'mike@mail.com'
@@ -92,14 +92,14 @@ RSpec.describe 'User', type: :system do
 
       expect(page).to have_content('Jerry')
       expect(page).to have_content('Student from Japan')
-      expect(page).to have_content('See all posts')
+      expect(page).to have_content('See more posts')
 
       visit users_path
 
       within('.users') { click_on 'Mike' }
       expect(page).to have_content('Mike')
       expect(page).to have_content('Teacher from Mexico, living in Japan')
-      expect(page).to have_content('See all posts')
+      expect(page).to have_content('See more posts')
 
       visit users_path
       within('.users') { click_on 'Monica' }
