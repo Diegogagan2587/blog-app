@@ -2,12 +2,21 @@ require 'rails_helper'
 
 RSpec.describe PostsController, type: :controller do
   include Devise::Test::ControllerHelpers
+  def sign_in(user)
+    if user.nil?
+      allow(request.env['warden']).to receive(:authenticate!).and_throw(:warden, { scope: :user })
+      allow(controller).to receive(:current_user).and_return(nil)
+    else
+      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
+    end
+  end
   before do
     Rails.cache.clear
-    @user = User.new(name: 'diego', photo: '', bio: 'bio', email: 'diego@mail.com', password: '123456')
-    @post = Post.new(author: @user, text: 'text', title: 'title')
-    @post.save
-    @user.save
+    @user = User.create(name: 'diego', photo: '', bio: 'bio', email: 'diego@mail.com', password: '123456')
+    @post = Post.create(author: @user, text: 'text', title: 'title')
+    @user.confirm
+    sign_in @user
     puts @user.errors.messages unless @user.valid?
     puts @post.errors.messages unless @post.valid?
   end

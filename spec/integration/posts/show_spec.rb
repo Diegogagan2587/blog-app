@@ -28,45 +28,99 @@ RSpec.describe 'Post', type: :system do
     @comment_one = Comment.create!(post: @post_one, author: @follower_one, text: 'I like this post !')
     @comment_two = Comment.create!(post: @post_one, author: @follower_two, text: 'I like this post too')
     @comment_tree = Comment.create!(post: @post_one, author: @follower_tree, text: 'The post is very good')
+
+    # since we require user confirmation to be able to login, we need to confirm the user
+    @user.confirm
+    @follower_one.confirm
+    @follower_two.confirm
+    @follower_tree.confirm
   end
 
   describe 'Show Page' do
     it 'should show the post title' do
-      visit user_post_path(@user, @post_one)
+      # we need to login first
+      visit users_path
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      within('.new_user') { click_on 'Login' }
+      # then we can visit the post show page
+      within('.users') { click_on @user.name }
+      within('.posts') { click_on @post_one.title }
+      # now we can test if the post title is shown
 
-      expect(page).to have_content('Post #2: How to live in Japan')
+      expect(page).to have_content(@post_one.title)
     end
 
     it 'should show the who wrote the post' do
-      visit user_post_path(@user, @post_one)
+      # first we authenticate the user
+      visit users_path
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      within('.new_user') { click_on 'Login' }
+      # then we can visit the post show page
+      within('.users') { click_on @user.name }
+      within('.btn-user-posts') { click_on 'See more posts' }
 
-      expect(page.body).to have_content('by Antonio')
+      within('.post-list') { click_on @post_one.title }
+
+      expect(page).to have_content(@post_one.author.name)
     end
 
     it 'should show how many comments it has' do
-      visit user_post_path(@user, @post_one)
+      visit users_path
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on @user.name }
+      within('.btn-user-posts') { click_on 'See more posts' }
+      within('.post-list') { click_on @post_one.title }
+
       expect(page).to have_content('Comments: 3')
     end
 
     it 'should show how many likes it has' do
-      visit user_post_path(@user, @post_one)
+      visit users_path
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on @user.name }
+      within('.btn-user-posts') { click_on 'See more posts' }
+      within('.post-list') { click_on @post_one.title }
       expect(page).to have_content('Likes: 3')
     end
 
     it 'should show the post body (post.text)' do
-      visit user_post_path(@user, @post_one)
+      visit users_path
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on @user.name }
+      within('.btn-user-posts') { click_on 'See more posts' }
+      within('.post-list') { click_on @post_one.title }
       expect(page).to have_content('Live in Japan is very easy')
     end
 
     it 'should show the user name of each commentor' do
-      visit user_post_path(@user, @post_one)
+      visit users_path
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on @user.name }
+      within('.btn-user-posts') { click_on 'See more posts' }
+      within('.post-list') { click_on @post_one.title }
       expect(page).to have_content('John')
       expect(page).to have_content('Mike')
       expect(page).to have_content('Jerry')
     end
 
     it 'should show the comment that each user wrote' do
-      visit user_post_path(@user, @post_one)
+      visit users_path
+      fill_in 'user_email', with: @user.email
+      fill_in 'user_password', with: @user.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on @user.name }
+      within('.btn-user-posts') { click_on 'See more posts' }
+      within('.post-list') { click_on @post_one.title }
       expect(page).to have_content('I like this post !')
       expect(page).to have_content('I like this post too')
       expect(page).to have_content('The post is very good')

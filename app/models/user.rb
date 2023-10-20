@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :bio, presence: false
 
+  ROLES = %i[admin user].freeze
+
   def initialize(attributes = {})
     super
     self.posts_counter = 0
@@ -18,5 +20,9 @@ class User < ApplicationRecord
 
   def last_three_posts
     posts.order(created_at: :desc).limit(3)
+  end
+
+  def is?(requested_role)
+    role == requested_role.to_s
   end
 end

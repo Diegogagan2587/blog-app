@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   root 'users#index'
   resources :users, only: [:index, :show]  do
 
-    resources :posts, only: [:index, :show, :new, :create] do 
+    resources :posts, only: [:index, :show, :new, :create, :destroy ] do 
       post 'add_like', on: :member
       delete 'delete_like', on: :member
+      delete 'delete_post', on: :member
+      delete 'delete_comment', on: :member
       resources :comments, only: [:new, :create]
     end
   end

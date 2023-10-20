@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Post', type: :system do
   before(:each) do
+    Rails.cache.clear
     Like.destroy_all
     Comment.destroy_all
     Post.destroy_all
@@ -41,7 +42,11 @@ RSpec.describe 'Post', type: :system do
     end
 
     it "shoud show the user's name" do
-      visit user_posts_path(@user_one)
+      visit users_path
+      fill_in 'user_email', with: @user_one.email
+      fill_in 'user_password', with: @user_one.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on 'Mike' }
       expect(page).to have_content('Mike')
     end
 
@@ -49,16 +54,22 @@ RSpec.describe 'Post', type: :system do
       visit users_path
       fill_in 'user_email', with: @user_one.email
       fill_in 'user_password', with: @user_one.password
-      sleep(1)
+
       within('.new_user') { click_on 'Login' }
-      sleep(2)
+
       within('.users') { click_on 'Mike' }
-      sleep(2)
+
       expect(page).to have_content('Number of posts: 5')
     end
 
     it 'Should show the title of the post' do
-      visit user_posts_path(@user_one)
+      visit users_path
+      fill_in 'user_email', with: @user_one.email
+      fill_in 'user_password', with: @user_one.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on 'Mike' }
+
+      within('.btn-user-posts') { click_on 'See more posts' }
 
       expect(page).to have_content('Post #1 Mike post 1')
       expect(page).to have_content('Post #2 Mike post 2')
@@ -68,22 +79,52 @@ RSpec.describe 'Post', type: :system do
     end
 
     it "should show some of the post's body(text)" do
+      visit users_path
+      fill_in 'user_email', with: @user_one.email
+      fill_in 'user_password', with: @user_one.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on 'Mike' }
+      within('.btn-user-posts') { click_on 'See more posts' }
+
       visit user_posts_path(@user_one)
+
       expect(page).to have_content('Mike post 1 text')
     end
 
     it 'should show the first comment of the post' do
-      visit user_posts_path(@user_one)
+      visit users_path
+      fill_in 'user_email', with: @user_one.email
+      fill_in 'user_password', with: @user_one.password
+      within('.new_user') { click_on 'Login' }
+      within('.users') { click_on 'Mike' }
+      within('.btn-user-posts') { click_on 'See more posts' }
       expect(page).to have_content('Mike post 1 comment 1')
     end
 
     it 'should show the number of comments the post has' do
-      visit user_posts_path(@user_one)
+      # we login with any user to be able to see the post
+      visit users_path
+      fill_in 'user_email', with: @user_one.email
+      fill_in 'user_password', with: @user_one.password
+      within('.new_user') { click_on 'Login' }
+      # we naviate to the post#index page
+      within('.users') { click_on 'Mike' }
+      within('.btn-user-posts') { click_on 'See more posts' }
+      # we test the number of comments
       expect(page).to have_content('Comments: 1')
       expect(page).to have_content('Comments: 0')
     end
 
     it 'should show the number of likes the post has' do
+      # we login with any user to be able to see the post
+      visit users_path
+      fill_in 'user_email', with: @user_one.email
+      fill_in 'user_password', with: @user_one.password
+      within('.new_user') { click_on 'Login' }
+      # we naviate to the post#index page
+      within('.users') { click_on 'Mike' }
+      within('.btn-user-posts') { click_on 'See more posts' }
+      # we test the number of likes
       visit user_posts_path(@user_one)
       expect(page).to have_content('Likes: 1')
       expect(page).to have_content('Likes: 0')
@@ -102,8 +143,18 @@ RSpec.describe 'Post', type: :system do
     end
 
     it "should redirect to a post's show page when clicking on the post's title" do
-      visit user_posts_path(@user_one)
-      click_on 'Post #1 Mike post 1'
+      # we login with any user to be able to see the post
+      visit users_path
+      fill_in 'user_email', with: @user_one.email
+      fill_in 'user_password', with: @user_one.password
+      within('.new_user') { click_on 'Login' }
+      # we naviate to the posts#index page
+      within('.users') { click_on 'Mike' }
+      within('.btn-user-posts') { click_on 'See more posts' }
+      # we navigate to the post#show page
+      within('.post-list') { click_on 'Mike post 1' }
+
+      # we test the the page is redirected to the post#show page
       expect(page).to have_current_path(user_post_path(@user_one, @post_one))
     end
   end
